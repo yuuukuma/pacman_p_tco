@@ -83,8 +83,11 @@ class GetPTypeTcoData:
 
             vbm_diff = round(abs(abs_vbm.energy - band_vbm.energy), 3)
             cbm_diff = round(abs(abs_cbm.energy - band_cbm.energy), 3)
+            band_gap = cbm.energy - vbm.energy
             result[doc["formula"]] = {"vbm": vbm.as_dict(),
                                       "cbm": cbm.as_dict(),
                                       "vbm_diff": vbm_diff,
-                                      "cbm_diff": cbm_diff}
+                                      "cbm_diff": cbm_diff,
+                                      "band_gap": band_gap}
         return result
+

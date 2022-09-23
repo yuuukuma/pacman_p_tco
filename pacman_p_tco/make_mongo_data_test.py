@@ -37,5 +37,6 @@ def test_band_gap():
                            'kpoint_index': 0,
                            'spin': 1,
                            'symbol': None},
-                   'vbm_diff': 0.001}}
+                   'vbm_diff': 0.001,
+                   "band_gap": 9.332}}
     assert actual == expected
