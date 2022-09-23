@@ -1,0 +1,11 @@
+{
+  "host": "172.20.11.3",
+  "port": 27017,
+  "database": "pacman_db",
+  "admin_user": "pacman",
+  "admin_password": "pacman",
+  "authsource": "pacman_db",
+  "readonly_user": "pacman",
+  "readonly_password": "pacman",
+  "aliases": {}
+}

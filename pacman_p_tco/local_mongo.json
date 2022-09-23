@@ -1,0 +1,10 @@
+{
+  "host": "localhost",
+  "port": 27017,
+  "database": "p_tco",
+  "admin_user": "pacman",
+  "admin_password": "pacman",
+  "readonly_user": "pacman",
+  "readonly_password": "pacman",
+  "aliases": {}
+}
