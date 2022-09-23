@@ -15,7 +15,7 @@ def test_get_optical_gap():
     assert actual == {"Al2O3": 9.5176}
 
 
-def test_band_gap():
+def test_get_band_gap():
     actual = get_data.get_band_gap()
     expected = \
         {'Al2O3': {'cbm': {'@class': 'BandEdge',
