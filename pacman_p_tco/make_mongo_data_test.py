@@ -40,3 +40,9 @@ def test_get_band_gap():
                    'vbm_diff': 0.001,
                    "band_gap": 9.332}}
     assert actual == expected
+
+
+def test_get_average_O_core_potential():
+    actual = get_data.get_average_O_core_potential()
+    expected = {"Al2O3": -59.13049999999999}
+    assert actual == expected

@@ -4,8 +4,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List
 
+import numpy as np
 from monty.json import MontyDecoder
 from pacman.utils.get_database import get_database
+from pymatgen.core import Structure
+from pymatgen.io.vasp import Outcar
 from vise.analyzer.band_edge_properties import BandEdge, merge_band_edge
 from vise.analyzer.dielectric_function import DieleFuncData, \
     min_e_w_target_coeff
@@ -91,3 +94,18 @@ class GetPTypeTcoData:
                                       "band_gap": band_gap}
         return result
 
+    def get_average_O_core_potential(self):
+        result = {}
+        for doc in self.ato_mongo.absorption_dd_hybrid.find(
+                {"formula": {"$in": self.formulas}},
+                {"formula": True, "dirpath": True}):
+            path = Path(doc["dirpath"].replace("/storage", "/Users/kumagai/ato"))
+            structure = Structure.from_file(path / "CONTCAR-finish")
+            outcar = Outcar(path / "OUTCAR-finish")
+            o_site_pot = []
+            for site, pot in zip(structure, outcar.electrostatic_potential):
+                if str(site.specie) == "O":
+                    o_site_pot.append(pot)
+            result[doc["formula"]] = float(np.average(o_site_pot))
+
+        return result
